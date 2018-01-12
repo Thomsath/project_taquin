@@ -73,4 +73,13 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="17dp" />
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:id="@+id/imageView3"
+        android:layout_below="@+id/button_3x3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
 </RelativeLayout>

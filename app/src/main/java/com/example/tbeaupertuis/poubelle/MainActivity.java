@@ -12,6 +12,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        final View image = findViewById(R.id.imageView3);
+        // On cache l'image avant le clic
+        image.setVisibility(View.GONE);
+
         final View button_3x3 = findViewById(R.id.button_3x3);
         final View button_4x4 = findViewById(R.id.button_4x4);
         final View button_5x5 = findViewById(R.id.button_5x5);
@@ -20,9 +24,12 @@ public class MainActivity extends AppCompatActivity {
         button_3x3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 int model_grid = 3;
-                // Code here executes on main thread after user presses button
+                // On affiche l'image cachée
+                //image.setVisibility(View.VISIBLE);
+                button_4x4.setLeft(15);
+
             }
-        });
+        }, );
 
         button_4x4.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
