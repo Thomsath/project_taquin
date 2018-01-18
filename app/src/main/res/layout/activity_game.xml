@@ -14,7 +14,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/textViewMouv" />
 
-        <EditText
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0"
@@ -25,31 +25,40 @@
         <Chronometer
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
+            android:layout_marginLeft="200px"
             android:id="@+id/time"
             android:layout_weight="1" />
     </LinearLayout>
 
     <GridView
         android:layout_width="match_parent"
-        android:layout_height="366dp" />
+        android:layout_height="314dp" />
 
     <LinearLayout
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <Button
             android:text="Pause"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/buttonPause" />
+            android:id="@+id/buttonPause"
+            android:layout_weight="1" />
 
         <Button
-            android:text="Rejouer"
+            android:text="Resume"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/buttonRejouer" />
+            android:id="@+id/buttonResume"
+            android:layout_weight="1" />
+
     </LinearLayout>
+
+    <Button
+        android:text="Rejouer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonRejouer" />
 
 </LinearLayout>
