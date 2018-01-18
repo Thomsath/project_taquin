@@ -15,11 +15,13 @@ import android.widget.Toast;
  * Created by tbeaupertuis on 18/01/18.
  */
 
-public class GameActivity extends AppCompatActivity {
+public class GameActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     Chronometer time;
     TextView nb_mouv;
     long timeWhenStopped = 0;
+    private ImageAdapter image;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,5 +63,15 @@ public class GameActivity extends AppCompatActivity {
                 nb_mouv.setText("0");
             }
         });
+
+        GridView gridview = (GridView) findViewById(R.id.GridView);
+        image=new ImageAdapter(this, 3,3);
+        gridview.setAdapter(image);
+        gridview.setOnItemClickListener(this);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
     }
 }
