@@ -10,37 +10,18 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.tbeaupertuis.poubelle.MainActivity">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
-
     <Button
         android:text="Grille 3X3"
         android:layout_width="match_parent"
         android:layout_marginTop="88dp"
         android:id="@+id/button_3x3"
-        android:layout_below="@+id/textView"
+        android:layout_below="@+id/x"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_height="57dp"
         android:backgroundTint="@android:color/holo_blue_dark" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:inputType="textPersonName"
-        android:text="UNBEAULOGO"
-        android:ems="10"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/editText"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_height="70dp" />
 
     <Button
         android:text="GRILLE 4X4"
@@ -63,23 +44,35 @@
         android:layout_marginTop="17dp" />
 
     <Button
-        android:text="Button"
+        android:text="JOUER"
         android:layout_width="match_parent"
         android:layout_height="57dp"
         android:layout_below="@+id/button_5x5"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/button8"
+        android:id="@+id/button_start"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="17dp" />
+        android:layout_marginTop="130dp"
+        android:background="@android:color/holo_green_dark"
+        android:textSize="20sp" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@mipmap/ic_launcher"
-        android:id="@+id/imageView3"
+        android:id="@+id/img_squirrel"
         android:layout_below="@+id/button_3x3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/ic_launcher_planet"
+        android:id="@+id/img_planet"
+        android:paddingTop="15dp"
+        android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
