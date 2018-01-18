@@ -12,21 +12,21 @@
             android:text="Mouvements : "
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView2" />
+            android:id="@+id/textViewMouv" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0"
             android:ems="10"
-            android:id="@+id/editText3"
+            android:id="@+id/nb_mouv"
             android:layout_weight="1" />
 
         <Chronometer
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:id="@+id/chronometer2"
+            android:id="@+id/time"
             android:layout_weight="1" />
     </LinearLayout>
 
@@ -43,13 +43,13 @@
             android:text="Pause"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/button2" />
+            android:id="@+id/buttonPause" />
 
         <Button
             android:text="Rejouer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/button" />
+            android:id="@+id/buttonRejouer" />
     </LinearLayout>
 
 </LinearLayout>
