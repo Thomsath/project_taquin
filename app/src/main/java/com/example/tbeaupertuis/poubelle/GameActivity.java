@@ -16,6 +16,7 @@ public class GameActivity extends AppCompatActivity {
 
     Chronometer time;
     TextView nb_mouv;
+    long timeWhenStopped = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,7 @@ public class GameActivity extends AppCompatActivity {
         Pause.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                timeWhenStopped = time.getBase() - SystemClock.elapsedRealtime();
                 time.stop();
             }
         });
@@ -39,6 +41,7 @@ public class GameActivity extends AppCompatActivity {
         Resume.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                time.setBase(SystemClock.elapsedRealtime() + timeWhenStopped);
                 time.start();
             }
         });
@@ -51,6 +54,8 @@ public class GameActivity extends AppCompatActivity {
 
                 time.setBase(SystemClock.elapsedRealtime());
                 time.start();
+                nb_mouv = (TextView) findViewById(R.id.nb_mouv);
+                nb_mouv.setText("0");
             }
         });
     }
