@@ -1,8 +1,47 @@
 package com.example.tbeaupertuis.poubelle;
 
-/**
- * Created by tbeaupertuis on 18/01/18.
- */
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
-public class ScoreActivity {
+public class ScoreActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_score);
+
+        final View button_restart = findViewById(R.id.btn_replay);
+        final View button_changeGrid = findViewById(R.id.btn_changeGrid);
+
+        button_restart.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // On redirige vers l'activité de jeu
+                finish();
+                Intent gameActivity = new Intent(ScoreActivity.this, GameActivity.class);
+                startActivity(gameActivity);
+            }
+        });
+
+        button_changeGrid.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                finish();
+                Intent mainActivity = new Intent(ScoreActivity.this, MainActivity.class);
+                startActivity(mainActivity);
+            }
+        });
+
+           // Récupération des variables envoyées (temps et mouvement)
+            Intent intent = getIntent();
+            String message = intent.getStringExtra(GameActivity.EXTRA_MESSAGE);
+
+            // Variables à changer par le temps et déplacement
+            TextView test = (TextView) findViewById(R.id.textViewtest);
+            test.setText(message);
+    }
 }

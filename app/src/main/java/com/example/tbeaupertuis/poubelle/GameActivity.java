@@ -1,5 +1,6 @@
 package com.example.tbeaupertuis.poubelle;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
@@ -16,13 +17,24 @@ import android.widget.Toast;
  */
 
 public class GameActivity extends AppCompatActivity {
+public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
 
     Chronometer time;
     TextView nb_mouv;
     long timeWhenStopped = 0;
-
+    int test = 2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        // TRANSFERT VARIABLES à Score
+        Intent intent = new Intent(this, ScoreActivity.class);
+        // Variable test à remplacer par les variables de temps et de mouvement
+        String message = String.valueOf(test);
+        intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
+
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
     //Lancement du chronomètre lors de la création de l'activity
