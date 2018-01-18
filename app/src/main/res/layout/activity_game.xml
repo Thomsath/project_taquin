@@ -31,6 +31,7 @@
     </LinearLayout>
 
     <GridView
+        android:id="@+id/GridView"
         android:layout_width="match_parent"
         android:layout_height="366dp" />
 
