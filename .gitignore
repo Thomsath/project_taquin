@@ -1,0 +1,10 @@
+#ignore hidden fil
+.*
+
+app/app.iml
+local.properties
+build/intermediates/
+project_taquin.iml
+
+#mais pas le gitignore
+!.gitignore
