@@ -29,20 +29,27 @@ public class MainActivity extends AppCompatActivity {
                 button_4x4.setLeft(15);
 
             }
-        }, );
-
+        });
+        // Au clic bouton 4x4
         button_4x4.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-               int model_grid = 4;
+                int model_grid = 4;
+                // On affiche l'image cachée
+                //image.setVisibility(View.VISIBLE);
+                button_4x4.setLeft(15);
+
             }
         });
-
-        button_5x5.setOnClickListener(new View.OnClickListener() {
+        // Au clic bouton 5x5
+        button_3x3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 int model_grid = 5;
+                // On affiche l'image cachée
+                //image.setVisibility(View.VISIBLE);
+                button_4x4.setLeft(15);
+
             }
         });
-
 
     }
 }
