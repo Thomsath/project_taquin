@@ -21,7 +21,8 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_height="57dp"
-        android:backgroundTint="@android:color/holo_blue_dark" />
+        android:backgroundTint="@android:color/holo_blue_dark"
+        style="@android:style/Widget.Holo.Button.Small" />
 
     <Button
         android:text="GRILLE 4X4"
@@ -71,9 +72,9 @@
         android:layout_height="wrap_content"
         app:srcCompat="@mipmap/ic_launcher_planet"
         android:id="@+id/img_planet"
-        android:paddingTop="15dp"
-        android:layout_centerVertical="true"
+        android:layout_above="@+id/button_start"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="225dp" />
 
 </RelativeLayout>

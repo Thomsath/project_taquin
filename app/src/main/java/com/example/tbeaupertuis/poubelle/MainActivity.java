@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
         final View button_3x3 = findViewById(R.id.button_3x3);
         final View button_4x4 = findViewById(R.id.button_4x4);
         final View button_5x5 = findViewById(R.id.button_5x5);
-        int model_grid;
 
         // ! ------------------------------------ // 3 X 3 //  ------------------------------------ !
 
@@ -39,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
                 button_start.setVisibility(View.GONE);
                 img_squirrel.setVisibility(View.VISIBLE);
                 img_planet.setVisibility(View.GONE);
-                button_4x4.setY(300);
+                button_4x4.setY(310);
             }
         });
 
@@ -62,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 button_start.setVisibility(View.GONE);
                 img_planet.setVisibility(View.VISIBLE);
                 img_squirrel.setVisibility(View.GONE);
-                button_5x5.setY(380);
+                button_5x5.setY(440);
             }
         });
         // Au clic de l'image 3x3
@@ -75,6 +74,30 @@ public class MainActivity extends AppCompatActivity {
                 button_start.setVisibility(View.VISIBLE);
             }
         });
+
+        // ! ------------------------------------ // 5 X 5 //  ------------------------------------ !
+
+        button_5x5.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                int model_grid = 4;
+                button_5x5.setY(380);
+                button_start.setVisibility(View.GONE);
+                img_planet.setVisibility(View.GONE);
+                img_squirrel.setVisibility(View.GONE);
+            }
+        });
+        // Au clic de l'image 3x3
+        img_squirrel.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v){
+                //button_5x5.setY(270);
+                img_planet.setVisibility(View.GONE);
+                img_planet.setVisibility(View.GONE);
+
+                button_start.setY(570);
+                button_start.setVisibility(View.VISIBLE);
+            }
+        });
+
         // ! ------------------------------------ // START //  ------------------------------------ !
         button_start.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
