@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 button_5x5.setY(440);
             }
         });
-        // Au clic de l'image 3x3
+        // Au clic de l'image 4x4
         img_squirrel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
                 //button_5x5.setY(270);
@@ -86,12 +86,11 @@ public class MainActivity extends AppCompatActivity {
                 img_squirrel.setVisibility(View.GONE);
             }
         });
-        // Au clic de l'image 3x3
-        img_squirrel.setOnClickListener(new View.OnClickListener() {
+        // Au clic de l'image 5x5
+        img_planet.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
-                //button_5x5.setY(270);
-                img_planet.setVisibility(View.GONE);
-                img_planet.setVisibility(View.GONE);
+                button_5x5.setY(260);
+                img_squirrel.setVisibility(View.GONE);
 
                 button_start.setY(570);
                 button_start.setVisibility(View.VISIBLE);

@@ -12,6 +12,13 @@ import android.widget.Chronometer;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+
+import static android.R.id.list;
+
 /**
  * Created by tbeaupertuis on 18/01/18.
  */
@@ -19,6 +26,7 @@ import android.widget.Toast;
 
 public class GameActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
+    public static final String TIME_EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE_TIME";
     Chronometer time;
     TextView nb_mouv;
     long timeWhenStopped = 0;
@@ -28,22 +36,34 @@ public class GameActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        /*// TRANSFERT VARIABLES à Score
-        Intent intent = new Intent(this, ScoreActivity.class);
-        // Variable test à remplacer par les variables de temps et de mouvement
-        String message = String.valueOf(test);
-        intent.putExtra(EXTRA_MESSAGE, message);
-        startActivity(intent);*/
-
 
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-    //Lancement du chronomètre lors de la création de l'activity
+        //Lancement du chronomètre lors de la création de l'activity
         time = (Chronometer) findViewById(R.id.time);
         time.start();
 
-    //Action du bouton Pause
+
+
+        // --------------------------------------- ENVOIE DES DATA (A METTRE LORSQUE
+        //                                         UTILISATEUR A GAGNE LA PARTIE)
+        //                                                                      -------------------------------------//
+        Integer nb_mouv_test = 5;
+        Date timeToScore = Calendar.getInstance().getTime();
+
+        String timeToScoreString = String.valueOf(timeToScore);
+        String nb_mouvString = String.valueOf(nb_mouv_test);
+
+        // 2 ELTS
+
+        Intent intent= new Intent(this, ScoreActivity.class);
+        intent.putExtra("key1", nb_mouvString);
+        intent.putExtra("key2", timeToScoreString);
+        startActivity(intent);
+
+
+        //Action du bouton Pause
         Button Pause = (Button)findViewById(R.id.buttonPause);
         Pause.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -53,7 +73,7 @@ public class GameActivity extends AppCompatActivity implements AdapterView.OnIte
             }
         });
 
-    //Action du bouton Resume
+        //Action du bouton Resume
         Button Resume = (Button)findViewById(R.id.buttonResume);
         Resume.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -63,7 +83,7 @@ public class GameActivity extends AppCompatActivity implements AdapterView.OnIte
             }
         });
 
-    //Action du bouton Rejouer
+        //Action du bouton Rejouer
         Button Rejouer = (Button)findViewById(R.id.buttonRejouer);
         Rejouer.setOnClickListener(new View.OnClickListener(){
             @Override
