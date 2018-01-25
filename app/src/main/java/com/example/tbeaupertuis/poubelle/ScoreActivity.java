@@ -5,10 +5,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.ListViewCompat;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 
@@ -49,6 +52,27 @@ public class ScoreActivity extends AppCompatActivity {
 
             TextView textView_score = (TextView) findViewById(R.id.textView_score);
             textView_score.setText(value_mouv + " mouvements");
+
+        // ! ------------------------------------ // BEST SCORE //  ------------------------------------ !
+        ListView BestScoreList = (ListView)findViewById(R.id.bestScoreList);
+        int pos = BestScoreList.getFirstVisiblePosition();
+
+        // Meilleur joueur en fonction de son nb mvts pour le test
+        // Tableau des mouvements
+
+        Integer[] mvts = new Integer[] {};
+
+
+
+        String[] values = new String[] { "1. Temps : 5 sec "  + "\nNombre de mouvements : " + value_mouv, String.valueOf(pos)
+        };
+        // Seulement si la liste est vide on set la liste
+        if(BestScoreList.getAdapter() == null) {
+            // Ajout elements dans listView
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                    android.R.layout.simple_list_item_1, android.R.id.text1, values);
+            BestScoreList.setAdapter(adapter);
+        }
 
     }
 }

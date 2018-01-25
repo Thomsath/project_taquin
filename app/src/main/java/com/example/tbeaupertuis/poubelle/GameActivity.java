@@ -47,7 +47,7 @@ public class GameActivity extends AppCompatActivity implements AdapterView.OnIte
         // --------------------------------------- ENVOIE DES DATA (A METTRE LORSQUE
         //                                         UTILISATEUR A GAGNE LA PARTIE)
         //                                                                      -------------------------------------//
-        Integer nb_mouv_test = 4;
+        Integer nb_mouv_test = 5;
         Date timeToScore = Calendar.getInstance().getTime();
 
         String timeToScoreString = String.valueOf(timeToScore);
