@@ -26,7 +26,7 @@ class ImageAdapter extends BaseAdapter {
     private int height;
     private ArrayList<Integer> vals = new ArrayList<Integer>();
 
-    public ImageAdapter(Context c, int w,int h) {
+    public ImageAdapter(Context c, int w, int h) {
         mContext = c;
         img = BitmapFactory.decodeResource(c.getResources(), R.drawable.ic_launcher);
         mThumbIds = new Bitmap[ w*h ];
@@ -80,7 +80,7 @@ class ImageAdapter extends BaseAdapter {
             imageView = (ImageView) convertView;
         }
 
-        //imageView.setImageResource(mThumbIds[position]);
+        imageView.setImageBitmap(mThumbIds[position]);
         return imageView;
     }
 }

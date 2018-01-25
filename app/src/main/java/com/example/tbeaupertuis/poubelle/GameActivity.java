@@ -16,13 +16,15 @@ import android.widget.Toast;
  * Created by tbeaupertuis on 18/01/18.
  */
 
-public class GameActivity extends AppCompatActivity {
-public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
 
+public class GameActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
+    public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
     Chronometer time;
     TextView nb_mouv;
     long timeWhenStopped = 0;
     int test = 2;
+    private ImageAdapter image;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -73,5 +75,15 @@ public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
                 nb_mouv.setText("0");
             }
         });
+
+        GridView gridview = (GridView) findViewById(R.id.GridView);
+        image=new ImageAdapter(this, 3,3);
+        gridview.setAdapter(image);
+        gridview.setOnItemClickListener(this);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
     }
 }
