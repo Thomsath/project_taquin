@@ -80,7 +80,7 @@ class ImageAdapter extends BaseAdapter {
             imageView = (ImageView) convertView;
         }
 
-        imageView.setImageResource(mThumbIds[position]);
+        //imageView.setImageResource(mThumbIds[position]);
         return imageView;
     }
 }
