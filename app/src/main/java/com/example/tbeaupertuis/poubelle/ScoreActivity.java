@@ -5,9 +5,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class ScoreActivity extends AppCompatActivity {
 
@@ -36,22 +39,16 @@ public class ScoreActivity extends AppCompatActivity {
             }
         });
 
-           // Récupération des variables envoyées (temps et mouvement)
 
-            // Mouvements
-            Intent intent = getIntent();
-            String message = intent.getStringExtra(GameActivity.EXTRA_MESSAGE) + " mouvements";
+            // VALEURS A REMPLCER DANS LE GAMEACTIVITY
+            Intent in = getIntent();
+            String value_mouv = in.getStringExtra("key1");
+            String value_time = in.getStringExtra("key2");
+            TextView textView_time = (TextView) findViewById(R.id.textView_time);
+            textView_time.setText("Votre temps : " + value_time);
 
-            // Variables à changer par la var de mvt
             TextView textView_score = (TextView) findViewById(R.id.textView_score);
-            textView_score.setText(message);
+            textView_score.setText(value_mouv + " mouvements");
 
-            // Temps
-            Intent intent = getIntent();
-            String message = intent.getStringExtra(GameActivity.EXTRA_MESSAGE) + " mouvements";
-
-            // Variables à changer par la var de temps
-            TextView textView_score = (TextView) findViewById(R.id.textView_score);
-            textView_score.setText(message);
     }
 }
