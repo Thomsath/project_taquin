@@ -28,12 +28,12 @@ public class GameActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        // TRANSFERT VARIABLES à Score
+        /*// TRANSFERT VARIABLES à Score
         Intent intent = new Intent(this, ScoreActivity.class);
         // Variable test à remplacer par les variables de temps et de mouvement
         String message = String.valueOf(test);
         intent.putExtra(EXTRA_MESSAGE, message);
-        startActivity(intent);
+        startActivity(intent);*/
 
 
 

@@ -47,11 +47,11 @@ public class ScoreActivity extends AppCompatActivity {
             textView_score.setText(message);
 
             // Temps
-            Intent intent = getIntent();
-            String message = intent.getStringExtra(GameActivity.EXTRA_MESSAGE) + " mouvements";
+            intent = getIntent();
+            message = intent.getStringExtra(GameActivity.EXTRA_MESSAGE) + " mouvements";
 
             // Variables à changer par la var de temps
-            TextView textView_score = (TextView) findViewById(R.id.textView_score);
+            textView_score = (TextView) findViewById(R.id.textView_score);
             textView_score.setText(message);
     }
 }
