@@ -25,45 +25,47 @@ class ImageAdapter extends BaseAdapter {
     private Context mContext;
     private Bitmap img;
     private Bitmap partHidden;
-    private Bitmap[] mThumbIds  ;
+    private Bitmap mThumbIds[]  ;
     private int width;
     private int height;
+    private int gd_size;
     private ArrayList<Integer> vals = new ArrayList<Integer>();
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public ImageAdapter(Context c, int w, int h) {
+    public ImageAdapter(Context c, int size) {
         mContext = c;
+        gd_size = size;
         img = BitmapFactory.decodeResource(c.getResources(), R.drawable.ile);
-        mThumbIds = new Bitmap[ w*h ];
-
-        this.width  = w ;
-        this.height = h ;
+        mThumbIds = new Bitmap[gd_size * gd_size];
 
         //Vals aléatoires (mélanger)
-        for(int i=0;i< ( width * height ) ;i++)
-        {
+        for (int i = 0; i < (gd_size * gd_size); i++) {
             this.vals.add(i);
         }
         Collections.shuffle(this.vals);
 
-        //Taille de chaque partie
-        int partsW  = img.getWidth() / width ;
-        int partsH = img.getHeight() / height ;
-        System.out.println(partsH + " x " + partsW);
+        decouper(img);
+        melanger(mThumbIds);
+    }
 
-        //Découper image
-        int count = 0 ;
-        for (int i = 0 ; i < width ; i++){
-            for ( int j = 0 ; j < height ; j++){
-                Bitmap part = Bitmap.createBitmap(img, partsW*i, partsH*j, partsW, partsH);
-                part.setHeight(partsH);
-                mThumbIds[vals.get(count)] = part ;
-                count++ ;
+    public void decouper (Bitmap image){
+        int taille = image.getWidth()/gd_size;
+        System.out.println(taille);
+        int b=0;
+        for (int y=0;y < gd_size ;y++){
+            for( int x =0;x<gd_size; x++){
+                mThumbIds[b]=Bitmap.createBitmap(image, x*taille, y*taille,taille,taille);
+                b++;
             }
         }
+        mThumbIds[mThumbIds.length-1]=Bitmap.createBitmap(taille,taille, Bitmap.Config.ALPHA_8);
+    }
 
-        //Cacher part bas droite
-        mThumbIds[8]=null;
+    public void melanger(Bitmap[] tab){
+        for (int i=0; i<500*gd_size;i++){
+            int n = (int)(Math.random() * tab.length);
+            //move(n);
+        }
     }
 
     public int getCount() {

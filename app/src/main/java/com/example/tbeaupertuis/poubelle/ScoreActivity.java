@@ -53,15 +53,15 @@ public class ScoreActivity extends AppCompatActivity {
             TextView textView_score = (TextView) findViewById(R.id.textView_score);
             textView_score.setText(value_mouv + " mouvements");
 
-<<<<<<< HEAD
+
             // Temps
-            intent = getIntent();
-            message = intent.getStringExtra(GameActivity.EXTRA_MESSAGE) + " mouvements";
+            Intent intent = getIntent();
+            String message = intent.getStringExtra(GameActivity.EXTRA_MESSAGE) + " mouvements";
 
             // Variables à changer par la var de temps
             textView_score = (TextView) findViewById(R.id.textView_score);
             textView_score.setText(message);
-=======
+
         // ! ------------------------------------ // BEST SCORE //  ------------------------------------ !
         ListView BestScoreList = (ListView)findViewById(R.id.bestScoreList);
         int pos = BestScoreList.getFirstVisiblePosition();
@@ -82,7 +82,5 @@ public class ScoreActivity extends AppCompatActivity {
                     android.R.layout.simple_list_item_1, android.R.id.text1, values);
             BestScoreList.setAdapter(adapter);
         }
-
->>>>>>> 4089bd79590836559be9bf03800efe8076bd515f
     }
 }

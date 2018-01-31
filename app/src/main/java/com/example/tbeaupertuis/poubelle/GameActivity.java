@@ -1,8 +1,10 @@
 package com.example.tbeaupertuis.poubelle;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -31,12 +33,12 @@ public class GameActivity extends AppCompatActivity implements AdapterView.OnIte
     TextView nb_mouv;
     long timeWhenStopped = 0;
     int test = 2;
-    private ImageAdapter image;
+    private ImageAdapter adapter;
+    private int gd_size;
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
@@ -97,8 +99,9 @@ public class GameActivity extends AppCompatActivity implements AdapterView.OnIte
         });
 
         GridView gridview = (GridView) findViewById(R.id.GridView);
-        image=new ImageAdapter(this, 3,3);
-        gridview.setAdapter(image);
+        adapter = new ImageAdapter(this,3);
+        gridview.setAdapter(adapter);
+        gridview.setNumColumns(3); //gd_size
         gridview.setOnItemClickListener(this);
     }
 
