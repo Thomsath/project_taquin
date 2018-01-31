@@ -25,26 +25,26 @@ class ImageAdapter extends BaseAdapter {
     private Context mContext;
     private Bitmap img;
     private Bitmap partHidden;
-    private Bitmap mThumbIds[]  ;
-    private int width;
-    private int height;
+    private Bitmap mThumbIds[];
     private int gd_size;
+    private int rannul;
     private ArrayList<Integer> vals = new ArrayList<Integer>();
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public ImageAdapter(Context c, int size) {
         mContext = c;
         gd_size = size;
-        img = BitmapFactory.decodeResource(c.getResources(), R.drawable.ile);
+        img = BitmapFactory.decodeResource(c.getResources(), R.drawable.ic_launcher);
         mThumbIds = new Bitmap[gd_size * gd_size];
 
         //Vals aléatoires (mélanger)
         for (int i = 0; i < (gd_size * gd_size); i++) {
             this.vals.add(i);
         }
-        Collections.shuffle(this.vals);
+        //Collections.shuffle(this.vals); -> Mélanger()
 
         decouper(img);
+        rannul=gd_size*gd_size-1;
         melanger(mThumbIds);
     }
 
@@ -64,7 +64,238 @@ class ImageAdapter extends BaseAdapter {
     public void melanger(Bitmap[] tab){
         for (int i=0; i<500*gd_size;i++){
             int n = (int)(Math.random() * tab.length);
-            //move(n);
+            move(n);
+        }
+    }
+
+    public void move( int position){
+        //tester position posible !
+        if( position % gd_size == 0){
+            if ((position-gd_size)>=0 && (position+gd_size)<=(vals.size()-1)){
+                //deplacement possible droite, bas, haut
+                if(vals.get(position+1)==rannul){
+                    Bitmap img = mThumbIds[position];
+                    mThumbIds[position]=mThumbIds[position+1];
+                    mThumbIds[position+1]=img;
+
+                    int x = vals.get(position);
+                    vals.set(position,vals.get(position+1));
+                    vals.set(position+1,x);
+                }
+                else if (vals.get(position+gd_size)==rannul){
+                    Bitmap img = mThumbIds[position];
+                    mThumbIds[position]=mThumbIds[position+gd_size];
+                    mThumbIds[position+gd_size]=img;
+                    int x = vals.get(position);
+                    vals.set(position,vals.get(position+gd_size));
+                    vals.set(position+gd_size,x);
+                }
+                else if (vals.get(position-gd_size)==rannul){
+                    Bitmap img = mThumbIds[position];
+                    mThumbIds[position]=mThumbIds[position-gd_size];
+                    mThumbIds[position-gd_size]=img;
+                    int x = vals.get(position);
+                    vals.set(position,vals.get(position-gd_size));
+                    vals.set(position-gd_size,x);
+                }
+
+            }
+            else if ((position-gd_size)<=0){
+                if(vals.get(position+1)==rannul){
+                    Bitmap img = mThumbIds[position];
+                    mThumbIds[position]=mThumbIds[position+1];
+                    mThumbIds[position+1]=img;
+                    int x = vals.get(position);
+                    vals.set(position,vals.get(position+1));
+                    vals.set(position+1,x);
+                }
+                else if (vals.get(position+gd_size)==rannul){
+                    Bitmap img = mThumbIds[position];
+                    mThumbIds[position]=mThumbIds[position+gd_size];
+                    mThumbIds[position+gd_size]=img;
+                    int x = vals.get(position);
+                    vals.set(position,vals.get(position+gd_size));
+                    vals.set(position+gd_size,x);
+                }
+            }
+            else if (position+gd_size>=vals.size()-1){
+
+                if(vals.get(position+1)==rannul){
+                    Bitmap img = mThumbIds[position];
+                    mThumbIds[position]=mThumbIds[position+1];
+                    mThumbIds[position+1]=img;
+                    int x = vals.get(position);
+                    vals.set(position,vals.get(position+1));
+                    vals.set(position+1,x);
+                }
+                else if (vals.get(position-gd_size)==rannul){
+                    Bitmap img = mThumbIds[position];
+                    mThumbIds[position]=mThumbIds[position-gd_size];
+                    mThumbIds[position-gd_size]=img;
+                    int x = vals.get(position);
+                    vals.set(position,vals.get(position-gd_size));
+                    vals.set(position-gd_size,x);
+                }
+
+            }
+        }
+        else if (position % gd_size == (gd_size-1)){
+            if ((position-gd_size)>=0 && (position+gd_size)<=(vals.size()-1)){
+                //deplacement possible droite, bas, haut
+                if(vals.get(position-1)==rannul){
+                    Bitmap img = mThumbIds[position];
+                    mThumbIds[position]=mThumbIds[position-1];
+                    mThumbIds[position-1]=img;
+                    int x = vals.get(position);
+                    vals.set(position,vals.get(position-1));
+                    vals.set(position-1,x);
+                }
+                else if (vals.get(position+gd_size)==rannul){
+                    Bitmap img = mThumbIds[position];
+                    mThumbIds[position]=mThumbIds[position+gd_size];
+                    mThumbIds[position+gd_size]=img;
+                    int x = vals.get(position);
+                    vals.set(position,vals.get(position+gd_size));
+                    vals.set(position+gd_size,x);
+                }
+                else if (vals.get(position-gd_size)==rannul){
+                    Bitmap img = mThumbIds[position];
+                    mThumbIds[position]=mThumbIds[position-gd_size];
+                    mThumbIds[position-gd_size]=img;
+                    int x = vals.get(position);
+                    vals.set(position,vals.get(position-gd_size));
+                    vals.set(position-gd_size,x);
+                }
+
+            }
+            if (position-gd_size<=0){
+                if(vals.get(position-1)==rannul){
+                    Bitmap img = mThumbIds[position];
+                    mThumbIds[position]=mThumbIds[position-1];
+                    mThumbIds[position-1]=img;
+                    int x = vals.get(position);
+                    vals.set(position,vals.get(position-1));
+                    vals.set(position-1,x);
+                }
+                else if (vals.get(position+gd_size)==rannul){
+                    Bitmap img = mThumbIds[position];
+                    mThumbIds[position]=mThumbIds[position+gd_size];
+                    mThumbIds[position+gd_size]=img;
+                    int x = vals.get(position);
+                    vals.set(position,vals.get(position+gd_size));
+                    vals.set(position+gd_size,x);
+                }
+
+            }
+            else if (position+gd_size>=vals.size()-1){
+                if(vals.get(position-1)==rannul){
+                    Bitmap img = mThumbIds[position];
+                    mThumbIds[position]=mThumbIds[position-1];
+                    mThumbIds[position-1]=img;
+                    int x = vals.get(position);
+                    vals.set(position,vals.get(position-1));
+                    vals.set(position-1,x);
+                }
+                else if (vals.get(position-gd_size)==rannul){
+                    Bitmap img = mThumbIds[position];
+                    mThumbIds[position]=mThumbIds[position-gd_size];
+                    mThumbIds[position-gd_size]=img;
+                    int x = vals.get(position);
+                    vals.set(position,vals.get(position-gd_size));
+                    vals.set(position-gd_size,x);
+                }
+            }
+        }
+        else {
+            if ((position-gd_size)>=0 && (position+gd_size)<=(vals.size()-1)){
+                //deplacement possible droite, bas, haut ,gauche
+                if(vals.get(position-1)==rannul){
+                    Bitmap img = mThumbIds[position];
+                    mThumbIds[position]=mThumbIds[position-1];
+                    mThumbIds[position-1]=img;
+                    int x = vals.get(position);
+                    vals.set(position,vals.get(position-1));
+                    vals.set(position-1,x);
+                }
+                else if (vals.get(position+gd_size)==rannul){
+                    Bitmap img = mThumbIds[position];
+                    mThumbIds[position]=mThumbIds[position+gd_size];
+                    mThumbIds[position+gd_size]=img;
+                    int x = vals.get(position);
+                    vals.set(position,vals.get(position+gd_size));
+                    vals.set(position+gd_size,x);
+                }
+                else if (vals.get(position-gd_size)==rannul){
+                    Bitmap img = mThumbIds[position];
+                    mThumbIds[position]=mThumbIds[position-gd_size];
+                    mThumbIds[position-gd_size]=img;
+                    int x = vals.get(position);
+                    vals.set(position,vals.get(position-gd_size));
+                    vals.set(position-gd_size,x);
+                }
+                else if(vals.get(position+1)==rannul){
+                    Bitmap img = mThumbIds[position];
+                    mThumbIds[position]=mThumbIds[position+1];
+                    mThumbIds[position+1]=img;
+                    int x = vals.get(position);
+                    vals.set(position,vals.get(position+1));
+                    vals.set(position+1,x);
+                }
+
+            }
+            else if ((position-gd_size)<0){
+                if(vals.get(position-1)==rannul){
+                    Bitmap img = mThumbIds[position];
+                    mThumbIds[position]=mThumbIds[position-1];
+                    mThumbIds[position-1]=img;
+                    int x = vals.get(position);
+                    vals.set(position,vals.get(position-1));
+                    vals.set(position-1,x);
+                }
+                else if (vals.get(position+gd_size)==rannul){
+                    Bitmap img = mThumbIds[position];
+                    mThumbIds[position]=mThumbIds[position+gd_size];
+                    mThumbIds[position+gd_size]=img;
+                    int x = vals.get(position);
+                    vals.set(position,vals.get(position+gd_size));
+                    vals.set(position+gd_size,x);
+                }
+
+                else if(vals.get(position+1)==rannul){
+                    Bitmap img = mThumbIds[position];
+                    mThumbIds[position]=mThumbIds[position+1];
+                    mThumbIds[position+1]=img;
+                    int x = vals.get(position);
+                    vals.set(position,vals.get(position+1));
+                    vals.set(position+1,x);
+                }
+            }
+            else if (position+gd_size>vals.size()-1){
+                if(vals.get(position-1)==rannul){
+                    Bitmap img = mThumbIds[position];
+                    mThumbIds[position]=mThumbIds[position-1];
+                    mThumbIds[position-1]=img;
+                    int x = vals.get(position);
+                    vals.set(position,vals.get(position-1));
+                    vals.set(position-1,x);
+                }
+                else if (vals.get(position-gd_size)==rannul){
+                    Bitmap img = mThumbIds[position];
+                    mThumbIds[position]=mThumbIds[position-gd_size];
+                    mThumbIds[position-gd_size]=img;
+                    int x = vals.get(position);
+                    vals.set(position,vals.get(position-gd_size));
+                    vals.set(position-gd_size,x);
+                }
+                else if(vals.get(position+1)==rannul){
+                    Bitmap img = mThumbIds[position];
+                    mThumbIds[position]=mThumbIds[position+1];
+                    mThumbIds[position+1]=img;
+                    int x = vals.get(position);
+                    vals.set(position,vals.get(position+1));
+                    vals.set(position+1,x);
+                }
+            }
         }
     }
 
@@ -86,8 +317,9 @@ class ImageAdapter extends BaseAdapter {
         if (convertView == null) {
             // if it's not recycled, initialize some attributes
             imageView = new ImageView(mContext);
-            imageView.setScaleType(ImageView.ScaleType.CENTER);
-            imageView.setPadding(2, 2, 2, 2);
+            imageView.setLayoutParams(new GridView.LayoutParams(350, 350));
+            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            imageView.setPadding(1, 1, 1, 1);
         } else {
             imageView = (ImageView) convertView;
         }

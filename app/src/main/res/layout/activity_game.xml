@@ -34,9 +34,7 @@
     <GridView
         android:id="@+id/GridView"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:minHeight="1000dp"
-        android:numColumns="3" />
+        android:layout_height="351dp" />
 
     <LinearLayout
         android:orientation="horizontal"

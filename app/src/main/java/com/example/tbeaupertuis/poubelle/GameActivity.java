@@ -35,6 +35,7 @@ public class GameActivity extends AppCompatActivity implements AdapterView.OnIte
     int test = 2;
     private ImageAdapter adapter;
     private int gd_size;
+    private GridView gridview;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -98,7 +99,7 @@ public class GameActivity extends AppCompatActivity implements AdapterView.OnIte
             }
         });
 
-        GridView gridview = (GridView) findViewById(R.id.GridView);
+        gridview = (GridView) findViewById(R.id.GridView);
         adapter = new ImageAdapter(this,3);
         gridview.setAdapter(adapter);
         gridview.setNumColumns(3); //gd_size
@@ -107,6 +108,6 @@ public class GameActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+        gridview.setAdapter(adapter);
     }
 }
