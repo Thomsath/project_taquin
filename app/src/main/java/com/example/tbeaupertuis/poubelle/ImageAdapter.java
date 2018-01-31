@@ -121,15 +121,6 @@ class ImageAdapter extends BaseAdapter {
 
             }
 
-            // Ici cela représente toutes les cases du haut de la grille 
-            // + la première case (à gauche) de la deuxième ligne
-             /* 
-             ______
-            |x|x|x|
-            |x| | |
-            | | | |
-            ¯¯¯¯¯¯¯
-            */
             else if ((position-gd_size)<=0){
                 if(vals.get(position+1)==rannul){
                     Bitmap img = mThumbIds[position];
@@ -153,7 +144,7 @@ class ImageAdapter extends BaseAdapter {
                 }
             }
 
-            // Ici, 
+
             else if (position+gd_size>=vals.size()-1){
 
                 if(vals.get(position+1)==rannul){
@@ -179,6 +170,7 @@ class ImageAdapter extends BaseAdapter {
 
             }
         }
+
         else if (position % gd_size == (gd_size-1)){
             if ((position-gd_size)>=0 && (position+gd_size)<=(vals.size()-1)){
                 //deplacement possible droite, bas, haut
