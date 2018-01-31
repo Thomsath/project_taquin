@@ -38,12 +38,16 @@ class ImageAdapter extends BaseAdapter {
         mThumbIds = new Bitmap[gd_size * gd_size];
 
         //Vals aléatoires (mélanger)
+
+        // On remplis une liste qui représente la grille de jeu
         for (int i = 0; i < (gd_size * gd_size); i++) {
             this.vals.add(i);
         }
         //Collections.shuffle(this.vals); -> Mélanger()
 
         decouper(img);
+
+
         rannul=gd_size*gd_size-1;
         melanger(mThumbIds);
     }
@@ -69,16 +73,28 @@ class ImageAdapter extends BaseAdapter {
     }
 
     public void move( int position){
-        //tester position posible !
+        // Ici on test les positions posibles suivant la place de la case vide
+
+        // Toutes les cases à gauche de la grille ont un modulo égal à 0 
+        // les conditions sont utiles à savoir où on se trouve sur la grille
+        /* 
+             ______
+            |x| | |
+            |x| | |
+            |x| | |
+            ¯¯¯¯¯¯¯
+        */
         if( position % gd_size == 0){
+
             if ((position-gd_size)>=0 && (position+gd_size)<=(vals.size()-1)){
                 //deplacement possible droite, bas, haut
                 if(vals.get(position+1)==rannul){
                     Bitmap img = mThumbIds[position];
                     mThumbIds[position]=mThumbIds[position+1];
                     mThumbIds[position+1]=img;
-
+                    // x est la variable tampon pour stocker la position le temps de l'échange des positions
                     int x = vals.get(position);
+                    // A chaque fois ici on échange les deux positions pour simuler le mouvement des pièces
                     vals.set(position,vals.get(position+1));
                     vals.set(position+1,x);
                 }
@@ -86,7 +102,9 @@ class ImageAdapter extends BaseAdapter {
                     Bitmap img = mThumbIds[position];
                     mThumbIds[position]=mThumbIds[position+gd_size];
                     mThumbIds[position+gd_size]=img;
+                    // x est la variable tampon pour stocker la position le temps de l'échange des positions
                     int x = vals.get(position);
+                    // A chaque fois ici on échange les deux positions pour simuler le mouvement des pièces
                     vals.set(position,vals.get(position+gd_size));
                     vals.set(position+gd_size,x);
                 }
@@ -94,18 +112,32 @@ class ImageAdapter extends BaseAdapter {
                     Bitmap img = mThumbIds[position];
                     mThumbIds[position]=mThumbIds[position-gd_size];
                     mThumbIds[position-gd_size]=img;
+                    // x est la variable tampon pour stocker la position le temps de l'échange des positions
                     int x = vals.get(position);
+                    // A chaque fois ici on échange les deux positions pour simuler le mouvement des pièces
                     vals.set(position,vals.get(position-gd_size));
                     vals.set(position-gd_size,x);
                 }
 
             }
+
+            // Ici cela représente toutes les cases du haut de la grille 
+            // + la première case (à gauche) de la deuxième ligne
+             /* 
+             ______
+            |x|x|x|
+            |x| | |
+            | | | |
+            ¯¯¯¯¯¯¯
+            */
             else if ((position-gd_size)<=0){
                 if(vals.get(position+1)==rannul){
                     Bitmap img = mThumbIds[position];
                     mThumbIds[position]=mThumbIds[position+1];
                     mThumbIds[position+1]=img;
+                    // x est la variable tampon pour stocker la position le temps de l'échange des positions
                     int x = vals.get(position);
+                    // A chaque fois ici on échange les deux positions pour simuler le mouvement des pièces
                     vals.set(position,vals.get(position+1));
                     vals.set(position+1,x);
                 }
@@ -113,18 +145,24 @@ class ImageAdapter extends BaseAdapter {
                     Bitmap img = mThumbIds[position];
                     mThumbIds[position]=mThumbIds[position+gd_size];
                     mThumbIds[position+gd_size]=img;
+                    // x est la variable tampon pour stocker la position le temps de l'échange des positions
                     int x = vals.get(position);
+                    // A chaque fois ici on échange les deux positions pour simuler le mouvement des pièces
                     vals.set(position,vals.get(position+gd_size));
                     vals.set(position+gd_size,x);
                 }
             }
+
+            // Ici, 
             else if (position+gd_size>=vals.size()-1){
 
                 if(vals.get(position+1)==rannul){
                     Bitmap img = mThumbIds[position];
                     mThumbIds[position]=mThumbIds[position+1];
                     mThumbIds[position+1]=img;
+                    // x est la variable tampon pour stocker la position le temps de l'échange des positions
                     int x = vals.get(position);
+                    // A chaque fois ici on échange les deux positions pour simuler le mouvement des pièces
                     vals.set(position,vals.get(position+1));
                     vals.set(position+1,x);
                 }
@@ -132,7 +170,9 @@ class ImageAdapter extends BaseAdapter {
                     Bitmap img = mThumbIds[position];
                     mThumbIds[position]=mThumbIds[position-gd_size];
                     mThumbIds[position-gd_size]=img;
+                    // x est la variable tampon pour stocker la position le temps de l'échange des positions
                     int x = vals.get(position);
+                    // A chaque fois ici on échange les deux positions pour simuler le mouvement des pièces
                     vals.set(position,vals.get(position-gd_size));
                     vals.set(position-gd_size,x);
                 }
@@ -146,7 +186,9 @@ class ImageAdapter extends BaseAdapter {
                     Bitmap img = mThumbIds[position];
                     mThumbIds[position]=mThumbIds[position-1];
                     mThumbIds[position-1]=img;
+                    // x est la variable tampon pour stocker la position le temps de l'échange des positions
                     int x = vals.get(position);
+                    // A chaque fois ici on échange les deux positions pour simuler le mouvement des pièces
                     vals.set(position,vals.get(position-1));
                     vals.set(position-1,x);
                 }
@@ -154,7 +196,9 @@ class ImageAdapter extends BaseAdapter {
                     Bitmap img = mThumbIds[position];
                     mThumbIds[position]=mThumbIds[position+gd_size];
                     mThumbIds[position+gd_size]=img;
+                    // x est la variable tampon pour stocker la position le temps de l'échange des positions
                     int x = vals.get(position);
+                    // A chaque fois ici on échange les deux positions pour simuler le mouvement des pièces
                     vals.set(position,vals.get(position+gd_size));
                     vals.set(position+gd_size,x);
                 }
@@ -162,7 +206,9 @@ class ImageAdapter extends BaseAdapter {
                     Bitmap img = mThumbIds[position];
                     mThumbIds[position]=mThumbIds[position-gd_size];
                     mThumbIds[position-gd_size]=img;
+                    // x est la variable tampon pour stocker la position le temps de l'échange des positions
                     int x = vals.get(position);
+                    // A chaque fois ici on échange les deux positions pour simuler le mouvement des pièces
                     vals.set(position,vals.get(position-gd_size));
                     vals.set(position-gd_size,x);
                 }
@@ -173,7 +219,9 @@ class ImageAdapter extends BaseAdapter {
                     Bitmap img = mThumbIds[position];
                     mThumbIds[position]=mThumbIds[position-1];
                     mThumbIds[position-1]=img;
+                    // x est la variable tampon pour stocker la position le temps de l'échange des positions
                     int x = vals.get(position);
+                    // A chaque fois ici on échange les deux positions pour simuler le mouvement des pièces
                     vals.set(position,vals.get(position-1));
                     vals.set(position-1,x);
                 }
@@ -181,7 +229,9 @@ class ImageAdapter extends BaseAdapter {
                     Bitmap img = mThumbIds[position];
                     mThumbIds[position]=mThumbIds[position+gd_size];
                     mThumbIds[position+gd_size]=img;
+                    // x est la variable tampon pour stocker la position le temps de l'échange des positions
                     int x = vals.get(position);
+                    // A chaque fois ici on échange les deux positions pour simuler le mouvement des pièces
                     vals.set(position,vals.get(position+gd_size));
                     vals.set(position+gd_size,x);
                 }
@@ -192,7 +242,9 @@ class ImageAdapter extends BaseAdapter {
                     Bitmap img = mThumbIds[position];
                     mThumbIds[position]=mThumbIds[position-1];
                     mThumbIds[position-1]=img;
+                    // x est la variable tampon pour stocker la position le temps de l'échange des positions
                     int x = vals.get(position);
+                    // A chaque fois ici on échange les deux positions pour simuler le mouvement des pièces
                     vals.set(position,vals.get(position-1));
                     vals.set(position-1,x);
                 }
@@ -200,7 +252,9 @@ class ImageAdapter extends BaseAdapter {
                     Bitmap img = mThumbIds[position];
                     mThumbIds[position]=mThumbIds[position-gd_size];
                     mThumbIds[position-gd_size]=img;
+                    // x est la variable tampon pour stocker la position le temps de l'échange des positions
                     int x = vals.get(position);
+                    // A chaque fois ici on échange les deux positions pour simuler le mouvement des pièces
                     vals.set(position,vals.get(position-gd_size));
                     vals.set(position-gd_size,x);
                 }
@@ -213,7 +267,9 @@ class ImageAdapter extends BaseAdapter {
                     Bitmap img = mThumbIds[position];
                     mThumbIds[position]=mThumbIds[position-1];
                     mThumbIds[position-1]=img;
+                    // x est la variable tampon pour stocker la position le temps de l'échange des positions
                     int x = vals.get(position);
+                    // A chaque fois ici on échange les deux positions pour simuler le mouvement des pièces
                     vals.set(position,vals.get(position-1));
                     vals.set(position-1,x);
                 }
@@ -221,7 +277,9 @@ class ImageAdapter extends BaseAdapter {
                     Bitmap img = mThumbIds[position];
                     mThumbIds[position]=mThumbIds[position+gd_size];
                     mThumbIds[position+gd_size]=img;
+                    // x est la variable tampon pour stocker la position le temps de l'échange des positions
                     int x = vals.get(position);
+                    // A chaque fois ici on échange les deux positions pour simuler le mouvement des pièces
                     vals.set(position,vals.get(position+gd_size));
                     vals.set(position+gd_size,x);
                 }
@@ -229,7 +287,9 @@ class ImageAdapter extends BaseAdapter {
                     Bitmap img = mThumbIds[position];
                     mThumbIds[position]=mThumbIds[position-gd_size];
                     mThumbIds[position-gd_size]=img;
+                    // x est la variable tampon pour stocker la position le temps de l'échange des positions
                     int x = vals.get(position);
+                    // A chaque fois ici on échange les deux positions pour simuler le mouvement des pièces
                     vals.set(position,vals.get(position-gd_size));
                     vals.set(position-gd_size,x);
                 }
@@ -237,7 +297,9 @@ class ImageAdapter extends BaseAdapter {
                     Bitmap img = mThumbIds[position];
                     mThumbIds[position]=mThumbIds[position+1];
                     mThumbIds[position+1]=img;
+                    // x est la variable tampon pour stocker la position le temps de l'échange des positions
                     int x = vals.get(position);
+                    // A chaque fois ici on échange les deux positions pour simuler le mouvement des pièces
                     vals.set(position,vals.get(position+1));
                     vals.set(position+1,x);
                 }
@@ -248,7 +310,9 @@ class ImageAdapter extends BaseAdapter {
                     Bitmap img = mThumbIds[position];
                     mThumbIds[position]=mThumbIds[position-1];
                     mThumbIds[position-1]=img;
+                    // x est la variable tampon pour stocker la position le temps de l'échange des positions
                     int x = vals.get(position);
+                    // A chaque fois ici on échange les deux positions pour simuler le mouvement des pièces
                     vals.set(position,vals.get(position-1));
                     vals.set(position-1,x);
                 }
@@ -256,7 +320,9 @@ class ImageAdapter extends BaseAdapter {
                     Bitmap img = mThumbIds[position];
                     mThumbIds[position]=mThumbIds[position+gd_size];
                     mThumbIds[position+gd_size]=img;
+                    // x est la variable tampon pour stocker la position le temps de l'échange des positions
                     int x = vals.get(position);
+                    // A chaque fois ici on échange les deux positions pour simuler le mouvement des pièces
                     vals.set(position,vals.get(position+gd_size));
                     vals.set(position+gd_size,x);
                 }
@@ -265,7 +331,9 @@ class ImageAdapter extends BaseAdapter {
                     Bitmap img = mThumbIds[position];
                     mThumbIds[position]=mThumbIds[position+1];
                     mThumbIds[position+1]=img;
+                    // x est la variable tampon pour stocker la position le temps de l'échange des positions
                     int x = vals.get(position);
+                    // A chaque fois ici on échange les deux positions pour simuler le mouvement des pièces
                     vals.set(position,vals.get(position+1));
                     vals.set(position+1,x);
                 }
@@ -275,7 +343,9 @@ class ImageAdapter extends BaseAdapter {
                     Bitmap img = mThumbIds[position];
                     mThumbIds[position]=mThumbIds[position-1];
                     mThumbIds[position-1]=img;
+                    // x est la variable tampon pour stocker la position le temps de l'échange des positions
                     int x = vals.get(position);
+                    // A chaque fois ici on échange les deux positions pour simuler le mouvement des pièces
                     vals.set(position,vals.get(position-1));
                     vals.set(position-1,x);
                 }
@@ -283,7 +353,9 @@ class ImageAdapter extends BaseAdapter {
                     Bitmap img = mThumbIds[position];
                     mThumbIds[position]=mThumbIds[position-gd_size];
                     mThumbIds[position-gd_size]=img;
+                    // x est la variable tampon pour stocker la position le temps de l'échange des positions
                     int x = vals.get(position);
+                    // A chaque fois ici on échange les deux positions pour simuler le mouvement des pièces
                     vals.set(position,vals.get(position-gd_size));
                     vals.set(position-gd_size,x);
                 }
@@ -291,7 +363,9 @@ class ImageAdapter extends BaseAdapter {
                     Bitmap img = mThumbIds[position];
                     mThumbIds[position]=mThumbIds[position+1];
                     mThumbIds[position+1]=img;
+                    // x est la variable tampon pour stocker la position le temps de l'échange des positions
                     int x = vals.get(position);
+                    // A chaque fois ici on échange les deux positions pour simuler le mouvement des pièces
                     vals.set(position,vals.get(position+1));
                     vals.set(position+1,x);
                 }
