@@ -53,9 +53,9 @@ public class GameActivity extends AppCompatActivity implements AdapterView.OnIte
         //                                         UTILISATEUR A GAGNE LA PARTIE)
         //                                                                      -------------------------------------//
         Integer nb_mouv_test = 5;
-        Date timeToScore = Calendar.getInstance().getTime();
+        Date nb_time_test = 5;
 
-        String timeToScoreString = String.valueOf(timeToScore);
+        String timeToScoreString = String.valueOf(nb_time_test);
         String nb_mouvString = String.valueOf(nb_mouv_test);
 
         // 2 ELTS
